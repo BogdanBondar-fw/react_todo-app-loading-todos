@@ -47,9 +47,10 @@ export const Body: React.FC<Props> = ({
             handleTodoDeleted={handleTodoDeleted}
             isLoading={isLoading}
           />
+          <div data-cy="TodoLoader" className={isLoading ? 'is-active' : ''} />
         </div>
       ))}
-      {isLoading && (
+      {isLoading && todos.length === 0 && (
         <div data-cy="TodoLoader" className="modal overlay is-active">
           <div className="modal-background has-background-white-ter" />
           <div className="loader" />

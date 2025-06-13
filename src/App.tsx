@@ -140,6 +140,8 @@ export const App: React.FC = () => {
             counterValue={todos.filter(todo => !todo.completed).length}
             filter={filter}
             setFilter={setFilter}
+            todos={todos}
+            isLoading={isLoading}
           />
         )}
       </div>

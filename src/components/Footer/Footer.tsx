@@ -1,17 +1,22 @@
 import React from 'react';
 import { Filter } from '../../App';
 import classNames from 'classnames';
+import { Todo } from '../../types/Todo';
 
 type Props = {
   counterValue: number;
   filter: Filter;
   setFilter: (filter: Filter) => void;
+  todos: Todo[];
+  isLoading: boolean;
 };
 
 export const Footer: React.FC<Props> = ({
   counterValue,
   filter,
   setFilter,
+  todos,
+  isLoading,
 }) => (
   <footer className="todoapp__footer" data-cy="Footer">
     <span className="todo-count" data-cy="TodosCounter">
@@ -59,5 +64,16 @@ export const Footer: React.FC<Props> = ({
         Completed
       </a>
     </nav>
+    {todos.some(todo => todo.completed) && (
+      <button
+        data-cy="ClearCompletedButton"
+        type="button"
+        className="clear-completed"
+        // onClick={handleClearCompleted}
+        disabled={isLoading}
+      >
+        Clear completed
+      </button>
+    )}
   </footer>
 );
